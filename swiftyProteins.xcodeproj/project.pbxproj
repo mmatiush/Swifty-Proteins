@@ -14,6 +14,8 @@
 		107D25F2237EE4D900835C14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107D25F0237EE4D900835C14 /* LaunchScreen.storyboard */; };
 		107D25FB237EEFA500835C14 /* ButtonWithBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */; };
 		107D25FD237F039300835C14 /* BiometricIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25FC237F039300835C14 /* BiometricIDAuth.swift */; };
+		10A2AD032385D385008FC21C /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2AD022385D385008FC21C /* VCLLoggingViewController.swift */; };
+		10DE2FDB2384617400CED451 /* ProteinsTableViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DE2FDA2384617400CED451 /* ProteinsTableViewContorller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		107D25F3237EE4D900835C14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithBorders.swift; sourceTree = "<group>"; };
 		107D25FC237F039300835C14 /* BiometricIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricIDAuth.swift; sourceTree = "<group>"; };
+		10A2AD022385D385008FC21C /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCLLoggingViewController.swift; path = ../VCLLoggingViewController.swift; sourceTree = "<group>"; };
+		10DE2FDA2384617400CED451 /* ProteinsTableViewContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinsTableViewContorller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,9 @@
 		107D25E6237EE4D600835C14 /* swiftyProteins */ = {
 			isa = PBXGroup;
 			children = (
+				10A2AD012385A2A0008FC21C /* ViewContorllers */,
 				107D25F9237EEF8100835C14 /* View */,
 				107D25E7237EE4D600835C14 /* AppDelegate.swift */,
-				107D25E9237EE4D600835C14 /* LoginViewController.swift */,
-				107D25EB237EE4D600835C14 /* Main.storyboard */,
 				107D25FC237F039300835C14 /* BiometricIDAuth.swift */,
 				107D25EE237EE4D900835C14 /* Assets.xcassets */,
 				107D25F0237EE4D900835C14 /* LaunchScreen.storyboard */,
@@ -73,9 +76,20 @@
 		107D25F9237EEF8100835C14 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				107D25EB237EE4D600835C14 /* Main.storyboard */,
 				107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		10A2AD012385A2A0008FC21C /* ViewContorllers */ = {
+			isa = PBXGroup;
+			children = (
+				107D25E9237EE4D600835C14 /* LoginViewController.swift */,
+				10DE2FDA2384617400CED451 /* ProteinsTableViewContorller.swift */,
+				10A2AD022385D385008FC21C /* VCLLoggingViewController.swift */,
+			);
+			path = ViewContorllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,10 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A2AD032385D385008FC21C /* VCLLoggingViewController.swift in Sources */,
 				107D25FB237EEFA500835C14 /* ButtonWithBorders.swift in Sources */,
 				107D25FD237F039300835C14 /* BiometricIDAuth.swift in Sources */,
 				107D25EA237EE4D600835C14 /* LoginViewController.swift in Sources */,
 				107D25E8237EE4D600835C14 /* AppDelegate.swift in Sources */,
+				10DE2FDB2384617400CED451 /* ProteinsTableViewContorller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

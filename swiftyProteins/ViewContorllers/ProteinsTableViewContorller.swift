@@ -1,0 +1,50 @@
+//
+//  ProteinsTableViewContorller.swift
+//  swiftyProteins
+//
+//  Created by Maksym MATIUSHCHENKO on 11/19/19.
+//  Copyright © 2019 Maksym MATIUSHCHENKO. All rights reserved.
+//
+
+import UIKit
+
+class ProteinsTableViewContorller: VCLLoggingViewController {
+    
+    private var userIsLoggedIn = false
+    
+    // TODO - Delete
+    override required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !userIsLoggedIn {
+            showLoginView()
+        }
+    
+    }
+    
+    // MARK: - View LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+        print("myUnwindAction called")
+        userIsLoggedIn = true
+    }
+
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        showLoginView()
+    }
+
+    func showLoginView() {
+        print("before segue")
+        performSegue(withIdentifier: "segueToLoginView", sender: self)
+        print("after segue")
+    }
+
+}

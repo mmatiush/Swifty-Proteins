@@ -7,37 +7,31 @@
 //
 
 import UIKit
+import Locksmith
 
-class LoginViewController: VCLLoggingViewController {
+class LoginViewController: UIViewController {
     
-    //MARK: DELETE TEMP PROPERTIES
-    let tempName = "max"
-    let tempPass = "123"
     
     // TODO - Delete
     override required init?(coder aDecoder: NSCoder) {
+        print("LoginViewController init")
         super.init(coder: aDecoder)
-        print("LoginViewController instantiated")
     }
     
-    // TODO - Delete
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("LoginViewController viewDidAppear")
-    }
-
-  
     
     // MARK: Properties
-    let touchMe = BiometricIDAuth()
-    let registerButtonTypeTag = 0
-    let loginButtonTypeTag = 1
+    private let userAccount = "swiftyCompanionAcc"
+    private let biometricAuth = BiometricIDAuth()
+    private let registerButtonTypeTag = 0
+    private let loginButtonTypeTag = 1
+    
     
     // MARK: - IBOutlets
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButtonOutlet: ButtonWithBorders!
     @IBOutlet weak var createInfoLabel: UILabel!
+    @IBOutlet weak var biometricAuthOutlet: UIButton!
     
     
     // MARK: - View LifeCycle
@@ -45,18 +39,33 @@ class LoginViewController: VCLLoggingViewController {
         super.viewDidLoad()
 
         let userAlreadyRegistered = UserDefaults.standard.bool(forKey: "hasLoginKey")
+        
+        // Customize
         if userAlreadyRegistered {
             loginButtonOutlet.setTitle("Login", for: .normal)
-            loginButtonOutlet.tag = registerButtonTypeTag
-            createInfoLabel.isHidden = true
-        } else {
-            loginButtonOutlet.setTitle("Create", for: .normal)
             loginButtonOutlet.tag = loginButtonTypeTag
+            createInfoLabel.isHidden = true
+            biometricAuthOutlet.isHidden = false
+        } else {
+            loginButtonOutlet.setTitle("Register", for: .normal)
+            loginButtonOutlet.tag = registerButtonTypeTag
             createInfoLabel.isHidden = false
+            biometricAuthOutlet.isHidden = true
         }
         
         if let storedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             usernameTextField.text = storedUsername
+        }
+        
+        switch biometricAuth.biometryType() {
+        case .none:
+            biometricAuthOutlet.isHidden = true
+        case .faceID:
+            biometricAuthOutlet.setImage(UIImage(named: "FaceIcon"), for: .normal)
+        case .touchID:
+            biometricAuthOutlet.setImage(UIImage(named: "Touch-icon-lg"), for: .normal)
+        @unknown default:
+            fatalError()
         }
         
     }
@@ -65,15 +74,14 @@ class LoginViewController: VCLLoggingViewController {
 
     @IBAction func loginButtonAction(_ sender: UIButton) {
     
+        // Check if login and pass fields are empty
         guard usernameTextField.hasText,
             passwordTextField.hasText,
             let newUsername = usernameTextField.text,
             let newPassword = passwordTextField.text else {
-                showLoginErrorAlert()
+                showLoginFailedAlert()
                 return
         }
-        print("I passed check")
-        
         
         if sender.tag == loginButtonTypeTag {
             
@@ -81,32 +89,77 @@ class LoginViewController: VCLLoggingViewController {
                 print("Unwind segue is about to be performed")
                 performSegue(withIdentifier: "unwindToTableView", sender: self)
             } else {
-                showLoginErrorAlert()
+                showLoginFailedAlert()
             }
             
         } else if sender.tag == registerButtonTypeTag {
+            
+            // Save password of the new account in KeyChain
+            do {
+                try Locksmith.saveData(data: ["password": newPassword], forUserAccount: self.userAccount)
+            } catch {
+                print("Unable to save password to KeyChain")
+                showLoginFailedAlert()
+            }
+            
+            // Save username if defaults
             UserDefaults.standard.set(newUsername, forKey: "username")
-            // TODO: - finish registration
+            UserDefaults.standard.set(true, forKey: "hasLoginKey")
+            
+            performSegue(withIdentifier: "unwindToTableView", sender: self)
         }
     }
     
+    @IBAction func touchIDLoginAction(_ sender: UIButton) {
+        
+        // Check if the entered username is the same as saved username
+        guard let username = UserDefaults.standard.value(forKey: "username") as? String,
+            username == usernameTextField.text else {
+                showLoginFailedAlert()
+                return
+        }
+        
+        biometricAuth.authenticateUser { [weak self] message in
+            if let message = message {
+                let alert = UIAlertController(title: "Error",
+                                               message: message,
+                                               preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(action)
+                self?.present(alert, animated: true)
+            } else {
+                print("Biometric authentication was successful")
+                self?.performSegue(withIdentifier: "unwindToTableView", sender: self)
+
+            }
+        }
+        
+    }
     
     // MARK: - Methods
     func checkLoginAndPassword(_ username: String, password: String) -> Bool {
-        if username == tempName && password == tempPass {
+        
+        if let storedUsername = UserDefaults.standard.value(forKey: "username") as? String,
+            storedUsername == username,
+            let dict = Locksmith.loadDataForUserAccount(userAccount: swiftyCompanionAcc),
+            dict["password"] as? String == password {
             return true
         } else {
             return false
         }
     }
     
-    func showLoginErrorAlert() {
+    func showLoginFailedAlert() {
         let alert = UIAlertController(title: "Login problem",
                                       message: "Wrong username or password.",
                                       preferredStyle: .alert)
         let alertOkAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(alertOkAction)
         present(alert, animated: true)
+    }
+    
+    deinit {
+        print("LoginViewController deinit")
     }
     
 }

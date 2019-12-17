@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ProteinsTableViewContorller: VCLLoggingViewController {
+class ProteinsTableViewContorller: UIViewController {
     
     private var userIsLoggedIn = false
     
     // TODO - Delete
     override required init?(coder aDecoder: NSCoder) {
+        print("ProteinsTableViewContorller init")
         super.init(coder: aDecoder)
     }
     
@@ -46,5 +47,11 @@ class ProteinsTableViewContorller: VCLLoggingViewController {
         performSegue(withIdentifier: "segueToLoginView", sender: self)
         print("after segue")
     }
-
+    
+    deinit {
+        print("ProteinsTableViewContorller deinit")
+    }
+    
 }
+
+

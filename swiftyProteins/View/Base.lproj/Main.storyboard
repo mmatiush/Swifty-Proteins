@@ -71,6 +71,9 @@
                                             <constraint firstAttribute="height" constant="67" id="oL4-ay-Peq"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="Touch-icon-lg"/>
+                                        <connections>
+                                            <action selector="touchIDLoginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FHP-Ae-RCl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -84,6 +87,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="biometricAuthOutlet" destination="0Xc-cl-LGn" id="tQp-gM-eg1"/>
                         <outlet property="createInfoLabel" destination="S4B-Oy-igf" id="PMM-nj-hFC"/>
                         <outlet property="loginButtonOutlet" destination="F09-Ay-kAo" id="yKu-6v-6av"/>
                         <outlet property="passwordTextField" destination="BGN-au-sIX" id="ADY-gv-t6g"/>
@@ -94,7 +98,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="T5g-eW-Xzw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1621.7391304347827" y="142.63392857142856"/>
+            <point key="canvasLocation" x="1578" y="149"/>
         </scene>
         <!--Proteins Table View Contorller-->
         <scene sceneID="LXf-2w-c3m">
@@ -140,12 +144,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="fI7-2W-dcx"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="segueToLoginView" id="cPm-nk-2Jl"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueToLoginView" animates="NO" id="cPm-nk-2Jl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcL-lY-Ezj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471" y="239"/>
+            <point key="canvasLocation" x="2381" y="149"/>
         </scene>
     </scenes>
     <resources>

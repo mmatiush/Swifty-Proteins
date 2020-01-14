@@ -14,12 +14,13 @@ class ProteinsTableViewContorller: UIViewController {
     
     // TODO - Delete
     override required init?(coder aDecoder: NSCoder) {
-        print("ProteinsTableViewContorller init")
+        print("ProteinListViewController init")
         super.init(coder: aDecoder)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("ProteinsTableViewContorller viewDidAppear")
         
         if !userIsLoggedIn {
             showLoginView()
@@ -44,14 +45,17 @@ class ProteinsTableViewContorller: UIViewController {
 
     func showLoginView() {
         print("before segue")
+        userIsLoggedIn = false
         performSegue(withIdentifier: "segueToLoginView", sender: self)
         print("after segue")
     }
     
     deinit {
-        print("ProteinsTableViewContorller deinit")
+        print("ProteinListViewController deinit")
     }
     
 }
+
+
 
 

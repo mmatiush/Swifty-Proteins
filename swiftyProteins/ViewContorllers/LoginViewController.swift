@@ -70,6 +70,16 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK: - IBActions
 
     @IBAction func loginButtonAction(_ sender: UIButton) {
@@ -87,7 +97,7 @@ class LoginViewController: UIViewController {
             
             if checkLoginAndPassword(newUsername, password: newPassword) {
                 print("Unwind segue is about to be performed")
-                performSegue(withIdentifier: "unwindToTableView", sender: self)
+                performSegue(withIdentifier: "unwindToProteinsList", sender: self)
             } else {
                 showLoginFailedAlert()
             }
@@ -96,17 +106,18 @@ class LoginViewController: UIViewController {
             
             // Save password of the new account in KeyChain
             do {
-                try Locksmith.saveData(data: ["password": newPassword], forUserAccount: self.userAccount)
-            } catch {
-                print("Unable to save password to KeyChain")
+                try Locksmith.updateData(data: ["password": newPassword], forUserAccount: self.userAccount)
+                print("New password has been added to KeyChain")
+            } catch let error {
+                print("Unable to save password to KeyChain. ", error.localizedDescription)
                 showLoginFailedAlert()
             }
             
-            // Save username if defaults
+            // Save username in defaults
             UserDefaults.standard.set(newUsername, forKey: "username")
             UserDefaults.standard.set(true, forKey: "hasLoginKey")
             
-            performSegue(withIdentifier: "unwindToTableView", sender: self)
+            performSegue(withIdentifier: "unwindToProteinsList", sender: self)
         }
     }
     
@@ -129,7 +140,7 @@ class LoginViewController: UIViewController {
                 self?.present(alert, animated: true)
             } else {
                 print("Biometric authentication was successful")
-                self?.performSegue(withIdentifier: "unwindToTableView", sender: self)
+                self?.performSegue(withIdentifier: "unwindToProteinsList", sender: self)
 
             }
         }
@@ -141,7 +152,7 @@ class LoginViewController: UIViewController {
         
         if let storedUsername = UserDefaults.standard.value(forKey: "username") as? String,
             storedUsername == username,
-            let dict = Locksmith.loadDataForUserAccount(userAccount: swiftyCompanionAcc),
+            let dict = Locksmith.loadDataForUserAccount(userAccount: "swiftyCompanionAcc"),
             dict["password"] as? String == password {
             return true
         } else {

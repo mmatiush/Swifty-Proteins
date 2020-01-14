@@ -1,5 +1,5 @@
 //
-//  TouchIDAuthentication.swift
+//  BiometricIDAuth.swift
 //  swiftyProteins
 //
 //  Created by Maksym MATIUSHCHENKO on 12/17/19.
@@ -25,7 +25,6 @@ class BiometricIDAuth {
 
     func authenticateUser(completion: @escaping (String?) -> Void) {
         guard canEvaluatePolicy() else {
-            
             completion("Biometric authentication is not available")
             return
         }
@@ -40,10 +39,6 @@ class BiometricIDAuth {
                     let message: String
                     
                     switch evaluateError {
-                    case LAError.authenticationFailed?:
-                        message = "There was a problem verifying your identity."
-                    case LAError.authenticationFailed?:
-                        message = "There was a problem verifying your identity."
                     case LAError.authenticationFailed?:
                         message = "There was a problem verifying your identity."
                     case LAError.userCancel?:

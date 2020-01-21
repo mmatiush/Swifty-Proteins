@@ -11,14 +11,6 @@ import Locksmith
 
 class LoginViewController: UIViewController {
     
-    
-    // TODO - Delete
-    override required init?(coder aDecoder: NSCoder) {
-        print("LoginViewController init")
-        super.init(coder: aDecoder)
-    }
-    
-    
     // MARK: Properties
     private let userAccount = "swiftyCompanionAcc"
     private let biometricAuth = BiometricIDAuth()

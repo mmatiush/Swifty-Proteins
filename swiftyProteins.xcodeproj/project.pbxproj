@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101C141423D7498100447CA9 /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 101C141323D7498100447CA9 /* ligands.txt */; };
 		107D25E8237EE4D600835C14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25E7237EE4D600835C14 /* AppDelegate.swift */; };
 		107D25EA237EE4D600835C14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25E9237EE4D600835C14 /* LoginViewController.swift */; };
 		107D25ED237EE4D600835C14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107D25EB237EE4D600835C14 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101C141323D7498100447CA9 /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
 		107D25E4237EE4D600835C14 /* swiftyProteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftyProteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107D25E7237EE4D600835C14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107D25E9237EE4D600835C14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101C141223D7496500447CA9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				101C141323D7498100447CA9 /* ligands.txt */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		107D25DB237EE4D600835C14 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 		107D25E6237EE4D600835C14 /* swiftyProteins */ = {
 			isa = PBXGroup;
 			children = (
+				101C141223D7496500447CA9 /* Model */,
 				10A2AD012385A2A0008FC21C /* ViewContorllers */,
 				107D25F9237EEF8100835C14 /* View */,
 				107D25E7237EE4D600835C14 /* AppDelegate.swift */,
@@ -179,6 +190,7 @@
 				107D25F2237EE4D900835C14 /* LaunchScreen.storyboard in Resources */,
 				107D25EF237EE4D900835C14 /* Assets.xcassets in Resources */,
 				107D25ED237EE4D600835C14 /* Main.storyboard in Resources */,
+				101C141423D7498100447CA9 /* ligands.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

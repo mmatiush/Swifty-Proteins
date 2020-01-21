@@ -9,53 +9,69 @@
 import UIKit
 
 class ProteinsTableViewContorller: UIViewController {
-    
+   
+    // MARK: - Properties
     private var userIsLoggedIn = false
-    
-    // TODO - Delete
-    override required init?(coder aDecoder: NSCoder) {
-        print("ProteinListViewController init")
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("ProteinsTableViewContorller viewDidAppear")
-        
-        if !userIsLoggedIn {
-            showLoginView()
-        }
-    
-    }
+    private var ligandsList = [String]()
+
+    // MARK: - IBOutlets
+    @IBOutlet weak var proteinsTable: UITableView!
     
     // MARK: - View LifeCycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !userIsLoggedIn {
+            performSegue(withIdentifier: "segueToLoginView", sender: self)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
 
+    // MARK: - IBActions
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
-        print("myUnwindAction called")
         userIsLoggedIn = true
     }
 
-    
     @IBAction func logoutAction(_ sender: Any) {
-        showLoginView()
-    }
-
-    func showLoginView() {
-        print("before segue")
         userIsLoggedIn = false
         performSegue(withIdentifier: "segueToLoginView", sender: self)
-        print("after segue")
     }
     
-    deinit {
-        print("ProteinListViewController deinit")
+    // MARK: - Methods
+    
+    func createLigandsListFromTextFile() {
+        if let filepath = Bundle.main.path(forResource: "ligands", ofType: "txt") {
+            do {
+                let contents = try String(contentsOfFile: filepath)
+                ligandsList = contents.components(separatedBy: .newlines)
+                ligandsList = ligandsList.filter({ $0 != ""})
+            } catch {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Failed to load the file with ligands.")
+        }
     }
+    
+    
     
 }
 
+extension ProteinsTableViewContorller: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+
+}
 
 
 

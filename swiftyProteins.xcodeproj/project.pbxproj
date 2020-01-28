@@ -398,7 +398,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EBB385976A12C6C00E5CCE6 /* Pods-swiftyProteins.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QMURK9V3B;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;
@@ -417,7 +417,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6D18F397A64C28DCD101AAFB /* Pods-swiftyProteins.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QMURK9V3B;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;

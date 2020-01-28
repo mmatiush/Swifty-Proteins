@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ProteinsTableViewContorller: UIViewController {
+class ProteinsTableViewContorller: UITableViewController {
    
     // MARK: - Properties
-    private var userIsLoggedIn = false
+    // TODO: - Change to false before launch
+    private var userIsLoggedIn = true
     private var ligandsList = [String]()
     private var filteredLigands = [String]()
     private let searchController = UISearchController(searchResultsController: nil)
@@ -21,9 +22,6 @@ class ProteinsTableViewContorller: UIViewController {
     private var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
     }
-
-    // MARK: - IBOutlets
-    @IBOutlet weak var tableView: UITableView!
     
     // MARK: - View LifeCycle
     
@@ -36,11 +34,11 @@ class ProteinsTableViewContorller: UIViewController {
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
+        searchController.searchBar.placeholder = "Search"
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,10 +62,13 @@ class ProteinsTableViewContorller: UIViewController {
     
     // MARK: - Methods
     private func createLigandsListFromTextFile() -> [String] {
-        if let filepath = Bundle.main.path(forResource: "ligands", ofType: "txt") {
+        
+        var list = [String]()
+        
+        if var filepath = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
                 let contents = try String(contentsOfFile: filepath)
-                var list = contents.components(separatedBy: .newlines)
+                list = contents.components(separatedBy: .newlines)
                 if list.last == "" {
                     list.removeLast()
                 }
@@ -78,15 +79,7 @@ class ProteinsTableViewContorller: UIViewController {
         } else {
             print("Failed to load the file with ligands.")
         }
-        return []
-    }
-    
-    func filterContentForSearchText(_ searchText: String) {
-        filteredLigands = ligandsList.filter { (ligand: String) -> Bool in
-        return ligand.lowercased().contains(searchText.lowercased())
-      }
-      
-      tableView.reloadData()
+        return list
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,16 +105,16 @@ class ProteinsTableViewContorller: UIViewController {
 }
 
     // MARK: - Extensions
-extension ProteinsTableViewContorller: UITableViewDataSource, UITableViewDelegate {
+extension ProteinsTableViewContorller {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredLigands.count
         }
         return ligandsList.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "proteinCell", for: indexPath)
         
@@ -141,6 +134,14 @@ extension ProteinsTableViewContorller: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredLigands = ligandsList.filter { (ligand: String) -> Bool in
+        return ligand.lowercased().contains(searchText.lowercased())
+      }
+      
+      tableView.reloadData()
     }
     
 }

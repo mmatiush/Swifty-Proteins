@@ -65,7 +65,7 @@ class ProteinsTableViewContorller: UITableViewController {
         
         var list = [String]()
         
-        if var filepath = Bundle.main.path(forResource: "ligands", ofType: "txt") {
+        if let filepath = Bundle.main.path(forResource: "ligands", ofType: "txt") {
             do {
                 let contents = try String(contentsOfFile: filepath)
                 list = contents.components(separatedBy: .newlines)
@@ -91,14 +91,16 @@ class ProteinsTableViewContorller: UITableViewController {
                 return
         }
         
-        var ligand: String
-        if isFiltering {
-            ligand = filteredLigands[indexPath.row]
-        } else {
-            ligand = ligandsList[indexPath.row]
-        }
+        // TODO: - setup LigandVisualisationViewContorller
         
-        detailViewController.ligand = ligand
+//        var ligand: String
+//        if isFiltering {
+//            ligand = filteredLigands[indexPath.row]
+//        } else {
+//            ligand = ligandsList[indexPath.row]
+//        }
+//
+//        detailViewController.ligand = ligand
         
     }
     

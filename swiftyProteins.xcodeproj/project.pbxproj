@@ -17,6 +17,8 @@
 		107D25FB237EEFA500835C14 /* ButtonWithBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */; };
 		10A2AD032385D385008FC21C /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A2AD022385D385008FC21C /* VCLLoggingViewController.swift */; };
 		10C79ADA23A8E1A0003D1A2C /* BiometricIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C79AD923A8E1A0003D1A2C /* BiometricIDAuth.swift */; };
+		10D6C3F123E3694A0088F6D3 /* Atoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6C3F023E3694A0088F6D3 /* Atoms.swift */; };
+		10D6C3F323E371500088F6D3 /* Molecules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6C3F223E371500088F6D3 /* Molecules.swift */; };
 		10DE2FDB2384617400CED451 /* ProteinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DE2FDA2384617400CED451 /* ProteinListViewController.swift */; };
 		8CE7D3CF2128D23A950B8872 /* Pods_swiftyProteins.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CD9A8CA25DBB387202ED49 /* Pods_swiftyProteins.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithBorders.swift; sourceTree = "<group>"; };
 		10A2AD022385D385008FC21C /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
 		10C79AD923A8E1A0003D1A2C /* BiometricIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricIDAuth.swift; sourceTree = "<group>"; };
+		10D6C3F023E3694A0088F6D3 /* Atoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atoms.swift; sourceTree = "<group>"; };
+		10D6C3F223E371500088F6D3 /* Molecules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecules.swift; sourceTree = "<group>"; };
 		10DE2FDA2384617400CED451 /* ProteinListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinListViewController.swift; sourceTree = "<group>"; };
 		55CD9A8CA25DBB387202ED49 /* Pods_swiftyProteins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftyProteins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBB385976A12C6C00E5CCE6 /* Pods-swiftyProteins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftyProteins.debug.xcconfig"; path = "Target Support Files/Pods-swiftyProteins/Pods-swiftyProteins.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				107D25EB237EE4D600835C14 /* Main.storyboard */,
 				107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */,
+				10D6C3F023E3694A0088F6D3 /* Atoms.swift */,
+				10D6C3F223E371500088F6D3 /* Molecules.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,11 +253,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A2AD032385D385008FC21C /* VCLLoggingViewController.swift in Sources */,
+				10D6C3F323E371500088F6D3 /* Molecules.swift in Sources */,
 				107D25FB237EEFA500835C14 /* ButtonWithBorders.swift in Sources */,
 				107D25EA237EE4D600835C14 /* LoginViewController.swift in Sources */,
 				107D25E8237EE4D600835C14 /* AppDelegate.swift in Sources */,
 				10DE2FDB2384617400CED451 /* ProteinListViewController.swift in Sources */,
 				1011EEAF23DF9E4800047995 /* LigandVisualisationViewController.swift in Sources */,
+				10D6C3F123E3694A0088F6D3 /* Atoms.swift in Sources */,
 				10C79ADA23A8E1A0003D1A2C /* BiometricIDAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,11 +410,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QMURK9V3B;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = unit;
+				PRODUCT_BUNDLE_IDENTIFIER = "UNIT-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,11 +430,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8QMURK9V3B;
 				INFOPLIST_FILE = swiftyProteins/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = unit;
+				PRODUCT_BUNDLE_IDENTIFIER = "UNIT-Factory";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

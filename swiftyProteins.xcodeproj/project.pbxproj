@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1003F29323E9F62000F4603E /* AtomSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003F29223E9F62000F4603E /* AtomSpecs.swift */; };
 		1011EEAF23DF9E4800047995 /* LigandVisualisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1011EEAE23DF9E4800047995 /* LigandVisualisationViewController.swift */; };
 		101C141423D7498100447CA9 /* ligands.txt in Resources */ = {isa = PBXBuildFile; fileRef = 101C141323D7498100447CA9 /* ligands.txt */; };
+		106D36E223E8D1480001E5BF /* StickNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106D36E123E8D1480001E5BF /* StickNode.swift */; };
 		107D25E8237EE4D600835C14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25E7237EE4D600835C14 /* AppDelegate.swift */; };
 		107D25EA237EE4D600835C14 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107D25E9237EE4D600835C14 /* LoginViewController.swift */; };
 		107D25ED237EE4D600835C14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 107D25EB237EE4D600835C14 /* Main.storyboard */; };
@@ -24,8 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1003F29223E9F62000F4603E /* AtomSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomSpecs.swift; sourceTree = "<group>"; };
 		1011EEAE23DF9E4800047995 /* LigandVisualisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LigandVisualisationViewController.swift; path = swiftyProteins/ViewContorllers/LigandVisualisationViewController.swift; sourceTree = SOURCE_ROOT; };
 		101C141323D7498100447CA9 /* ligands.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ligands.txt; sourceTree = "<group>"; };
+		106D36E123E8D1480001E5BF /* StickNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickNode.swift; sourceTree = "<group>"; };
 		107D25E4237EE4D600835C14 /* swiftyProteins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftyProteins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		107D25E7237EE4D600835C14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		107D25E9237EE4D600835C14 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				101C141323D7498100447CA9 /* ligands.txt */,
+				1003F29223E9F62000F4603E /* AtomSpecs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 				107D25FA237EEFA500835C14 /* ButtonWithBorders.swift */,
 				10D6C3F023E3694A0088F6D3 /* Atoms.swift */,
 				10D6C3F223E371500088F6D3 /* Molecules.swift */,
+				106D36E123E8D1480001E5BF /* StickNode.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,7 +263,9 @@
 				107D25FB237EEFA500835C14 /* ButtonWithBorders.swift in Sources */,
 				107D25EA237EE4D600835C14 /* LoginViewController.swift in Sources */,
 				107D25E8237EE4D600835C14 /* AppDelegate.swift in Sources */,
+				1003F29323E9F62000F4603E /* AtomSpecs.swift in Sources */,
 				10DE2FDB2384617400CED451 /* ProteinListViewController.swift in Sources */,
+				106D36E223E8D1480001E5BF /* StickNode.swift in Sources */,
 				1011EEAF23DF9E4800047995 /* LigandVisualisationViewController.swift in Sources */,
 				10D6C3F123E3694A0088F6D3 /* Atoms.swift in Sources */,
 				10C79ADA23A8E1A0003D1A2C /* BiometricIDAuth.swift in Sources */,

@@ -62,5 +62,15 @@ class Atoms {
       return atomsNode
     }
 
+    class func atom(name: String, radius: CGFloat) -> SCNNode {
+
+        let atom = SCNSphere(radius: radius)
+        let atomNode = SCNNode(geometry: atom)
+
+        atomNode.name = name
+
+        return atomNode
+
+    }
     
 }

@@ -12,13 +12,14 @@ import SceneKit
 class LigandVisualisationViewController: UIViewController {
     
     @IBOutlet weak var sceneView: SCNView!
+    private var hydrogenIsHidden = false
     
-    // Geometry
-    var geometryNode: SCNNode = SCNNode()
     
-    // Gestures
-    var currentAngle: Float = 0.0
+    @IBAction func hideHydrogen(_ sender: UIBarButtonItem) {
+      
+        sceneView.scene!.rootNode.isHidden = !sceneView.scene!.rootNode.isHidden
     
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +27,12 @@ class LigandVisualisationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        sceneSetup()
-        
-        //        let geometryNode = Atoms.allAtoms()
-        //        sceneView.scene!.rootNode.addChildNode(geometryNode)
+        cameraAndLightSetup()
         
     }
     
     // MARK: Scene
-    func sceneSetup() {
+    func cameraAndLightSetup() {
         // 1
         let scene = SCNScene()
         
@@ -56,45 +54,18 @@ class LigandVisualisationViewController: UIViewController {
         cameraNode.position = SCNVector3Make(0, 0, 25)
         scene.rootNode.addChildNode(cameraNode)
         
-        
-        
         // 2
-        //        let boxGeometry = SCNBox(width: 10.0, height: 10.0, length: 10.0, chamferRadius: 1.0)
-        //        let boxNode = SCNNode(geometry: boxGeometry)
-        
-        
-        //        let allAtomsNode = Atoms.allAtoms()
+  
         let methaneMoleculeNode = Molecules.methaneMolecule()
-        
-        //        scene.rootNode.addChildNode(boxNode)
         scene.rootNode.addChildNode(methaneMoleculeNode)
+        
+        // 2,5
         
         
         // 3
-        
-        //        geometryNode = boxNode
-        //        geometryNode = allAtomsNode
-        
-        
-        //        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
-        //        sceneView.addGestureRecognizer(panRecognizer)
-        
-        
         sceneView.allowsCameraControl = true
         sceneView.scene = scene
         
-    }
-    
-    @objc func panGesture(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: sender.view!)
-        var newAngle = (Float)(translation.x)*(Float)(Float.pi)/180.0
-        newAngle += currentAngle
-        
-        geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
-        
-        if(sender.state == UIGestureRecognizer.State.ended) {
-            currentAngle = newAngle
-        }
     }
     
 }

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TDf-Yl-EGa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,6 +95,20 @@
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ztr-TR-gRA">
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                             </sceneKitView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJZ-R2-NSb">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="XfV-UW-jUk"/>
+                                    <barButtonItem systemItem="action" id="e2t-gf-xPc"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tUN-qD-qeg"/>
+                                    <barButtonItem title="Hydrogen" id="or3-10-Dyv">
+                                        <connections>
+                                            <action selector="hideHydrogen:" destination="TDf-Yl-EGa" id="zOd-cZ-QSw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -106,14 +119,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PaT-Co-lVD"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Mjt-CR-pbA"/>
+                    <navigationItem key="navigationItem" id="Mjt-CR-pbA">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vQw-Tc-avo">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="FB3-q7-HjI">
+                                <rect key="frame" x="369" y="10" width="25" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="sceneView" destination="Ztr-TR-gRA" id="q1P-i9-b06"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="thX-cC-dge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2793" y="-676"/>
+            <point key="canvasLocation" x="2792.753623188406" y="-676.33928571428567"/>
         </scene>
         <!--Ligands-->
         <scene sceneID="nMi-U3-Iug">

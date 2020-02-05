@@ -1,16 +1,20 @@
 PODS:
+  - Alamofire (4.9.1)
   - Locksmith (4.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - Locksmith
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Locksmith
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
 
-PODFILE CHECKSUM: 6dea04999d4aa28a0b813f8096c6c43f09468dba
+PODFILE CHECKSUM: 844663c8b3853c81f3b7bdc2dad67c86729a73a0
 
 COCOAPODS: 1.7.3

@@ -8,5 +8,6 @@ target 'swiftyProteins' do
   # Pods for swiftyProteins
 
 pod 'Locksmith'
+pod 'Alamofire'
 
 end

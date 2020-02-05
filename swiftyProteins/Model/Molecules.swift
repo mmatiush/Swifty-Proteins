@@ -24,7 +24,7 @@ class Molecules {
         let hydrogenNode3 = nodeWithAtom(Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, -4, 0))
         let hydrogenNode4 = nodeWithAtom(Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, +6, 2))
         
-        let lineNode = makeCylinder(positionStart: SCNVector3(0, 0, 0), positionEnd: SCNVector3(0, +6, 2), radius: 0.2)
+        let lineNode = makeConnectionNode(positionStart: SCNVector3(0, 0, 0), positionEnd: SCNVector3(0, +6, 2), radius: 0.2)
 
         methaneMolecule.addChildNode(lineNode)
         
@@ -55,32 +55,7 @@ class Molecules {
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- func makeCylinder(positionStart: SCNVector3, positionEnd: SCNVector3, radius: CGFloat) -> SCNNode
+func makeConnectionNode(positionStart: SCNVector3, positionEnd: SCNVector3, radius: CGFloat) -> SCNNode
  {
      let height = GLKVector3Distance(SCNVector3ToGLKVector3(positionStart), SCNVector3ToGLKVector3(positionEnd))
      let startNode = SCNNode()
@@ -139,22 +114,3 @@ class Molecules {
      return returnNode
 }
 
-
-
-
-
-
-
-
-
-//extension SCNGeometry {
-//    class func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry {
-//        let indices: [Int32] = [0, 1]
-//
-//        let source = SCNGeometrySource(vertices: [vector1, vector2])
-//       let element = SCNGeometryElement(indices: indices, primitiveType: .line)
-//
-//        return SCNGeometry(sources: [source], elements: [element])
-//
-//    }
-//}

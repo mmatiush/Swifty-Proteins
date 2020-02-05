@@ -11,6 +11,27 @@ import SceneKit
 
 class Atoms {
     
+    class func atom(name: String, radius: CGFloat) -> SCNNode {
+
+         let atom = SCNSphere(radius: radius)
+         let atomNode = SCNNode(geometry: atom)
+
+         atomNode.name = name
+
+         return atomNode
+
+     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     class func carbonAtom() -> SCNGeometry {
         // 1
         let carbonAtom = SCNSphere(radius: 1.70)
@@ -60,17 +81,6 @@ class Atoms {
       atomsNode.addChildNode(fluorineNode)
         
       return atomsNode
-    }
-
-    class func atom(name: String, radius: CGFloat) -> SCNNode {
-
-        let atom = SCNSphere(radius: radius)
-        let atomNode = SCNNode(geometry: atom)
-
-        atomNode.name = name
-
-        return atomNode
-
     }
     
 }

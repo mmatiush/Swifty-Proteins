@@ -13,7 +13,7 @@ class LigandVisualisationViewController: UIViewController {
     
     @IBOutlet weak var sceneView: SCNView!
     private var hydrogenIsHidden = false
-    
+    private let ligandDescriptionFile = String()
     
     @IBAction func hideHydrogen(_ sender: UIBarButtonItem) {
       
@@ -28,6 +28,26 @@ class LigandVisualisationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         cameraAndLightSetup()
+
+        NetworkService.downloadLigandFile(ligandName: "10U") { (ligandFie) in
+            
+            guard let ligand = ligandFie else { return }
+            
+            let ligandFileSplitByLines = ligand.split(separator: "\n")
+            
+            for line in ligandFileSplitByLines {
+            
+                let splitString = line.split(separator: " ")
+                if splitString[0] == "ATOM" {
+                    addAtom(atom: spaceString)
+                } else if splitString[0] == "CONECT" {
+                    addConnection(conection: spaceString)
+                }
+            }
+            
+        }
+        
+        
         
     }
     

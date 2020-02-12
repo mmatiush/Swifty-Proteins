@@ -32,6 +32,33 @@ class Atoms {
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     class func carbonAtom() -> SCNGeometry {
         // 1
         let carbonAtom = SCNSphere(radius: 1.70)

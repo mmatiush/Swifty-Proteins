@@ -11,7 +11,7 @@ import UIKit
 
 struct AtomSpecs {
     
-    static let colors: [String : UIColor] = [
+    static let color: [String : UIColor] = [
         "H"     : UIColor.white,
         "C"     : UIColor.black,
         "N"     : UIColor(red: 0/255, green: 0/255, blue: 128/255, alpha: 1),
@@ -42,10 +42,13 @@ struct AtomSpecs {
         "RA"    : UIColor(red: 0/255, green: 100/255, blue: 0/255, alpha: 1),
         "TI"    : UIColor.gray,
         "FE"    : UIColor(red: 255/255, green: 140/255, blue: 0/255, alpha: 1),
-        "default" : UIColor.purple
     ]
     
-    static let radius: [String : Float] = [
+    static let radius: [String : CGFloat] = [
+        "H"     : 1.20,
+        "He"    : 1.40,
+        "Li"    : 1.82,
+        "C"     : 1.70,
         "N"     : 1.55,
         "O"     : 1.52,
         "F"     : 1.47,
@@ -80,6 +83,5 @@ struct AtomSpecs {
         "Tl"    : 1.96,
         "Pb"    : 2.02,
         "U"     : 1.86,
-        "default": 1.5
     ]
 }

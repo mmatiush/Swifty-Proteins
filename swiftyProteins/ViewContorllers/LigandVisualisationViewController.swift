@@ -110,5 +110,41 @@ class LigandVisualisationViewController: UIViewController {
         sceneView.scene = scene
         
     }
+ 
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        
+//        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
+//            self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
+//            let image = UIGraphicsGetImageFromCurrentImageContext()
+//            UIGraphicsEndImageContext()
+//            if let img = image {
+//                let shareObject = [img] as [UIImage]
+//                let vc = UIActivityViewController(activityItems: shareObject, applicationActivities: nil)
+//                vc.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+//                self.present(vc, animated: true, completion: nil)
+//            }
+        
+        
+        //Set the default sharing message.
+        let message = "Hello!"
+        let link = NSURL(string: "http://stackoverflow.com/")
+        // Screenshot:
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
+        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        //Set the link, message, image to share.
+        if let link = link, let img = img {
+            let objectsToShare = [message,link,img] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
+
+        
+    }
+    
+    
     
 }

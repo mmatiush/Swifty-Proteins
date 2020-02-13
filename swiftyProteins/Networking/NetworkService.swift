@@ -22,8 +22,6 @@ class NetworkService {
                 completionHandler(fileText)
             case .failure(let error):
                 print(error.localizedDescription)
-                debugPrint(response.result)
-                debugPrint(response.error)
             }
         }
     }

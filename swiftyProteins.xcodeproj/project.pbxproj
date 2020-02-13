@@ -45,6 +45,7 @@
 		10C79AD923A8E1A0003D1A2C /* BiometricIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricIDAuth.swift; sourceTree = "<group>"; };
 		10D6C3F023E3694A0088F6D3 /* Atoms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atoms.swift; sourceTree = "<group>"; };
 		10D6C3F223E371500088F6D3 /* Molecules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Molecules.swift; sourceTree = "<group>"; };
+		10DD8D7223F5AB24000A1EA9 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10DE2FDA2384617400CED451 /* ProteinListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinListViewController.swift; sourceTree = "<group>"; };
 		10E41B6623EB389300630858 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		55CD9A8CA25DBB387202ED49 /* Pods_swiftyProteins.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftyProteins.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +151,7 @@
 		6102C6C984045316C1BD8A12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				10DD8D7223F5AB24000A1EA9 /* Alamofire.framework */,
 				55CD9A8CA25DBB387202ED49 /* Pods_swiftyProteins.framework */,
 			);
 			name = Frameworks;

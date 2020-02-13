@@ -14,31 +14,25 @@ class LigandVisualisationViewController: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
 //    private var hydrogenIsHidden = false
 //    private let ligandFileContent = String()
+    var ligandName = ""
     var atomsArray : [SCNNode] = []
     var conectionsArray : [SCNNode] = []
     
     @IBAction func hideHydrogen(_ sender: UIBarButtonItem) {
-      
-        sceneView.scene!.rootNode.isHidden = !sceneView.scene!.rootNode.isHidden
-    
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//        sceneView.scene!.rootNode.isHidden = !sceneView.scene!.rootNode.isHidden
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         cameraAndLightSetup()
-
-        NetworkService.downloadLigandFile(ligandName: "10U") { (ligandFie) in
+        
+        NetworkService.downloadLigandFile(ligandName: ligandName) { (ligandFie) in
             
             guard let ligand = ligandFie else { return }
             
             let ligandFileSplitByLines = ligand.split(separator: "\n")
             
             for line in ligandFileSplitByLines {
-            
                 let splitString = line.split(separator: " ")
                 if splitString[0] == "ATOM" {
                     self.addAtom(splitString)
@@ -46,14 +40,10 @@ class LigandVisualisationViewController: UIViewController {
                     self.addConnection(splitString)
                 }
             }
-            
         }
-        
-        
-        
     }
     
-    func addAtom(_ splitString: Array<Substring>) {
+    private func addAtom(_ splitString: Array<Substring>) {
         
         if splitString.count != 12 {
             print("ATOM in ligand file has a wrong format")
@@ -67,14 +57,12 @@ class LigandVisualisationViewController: UIViewController {
         
         let atomNode = SCNNodeFactory.atom(name: name)
         atomNode.position = SCNVector3Make(x!, y!, z!)
-        
         sceneView.scene?.rootNode.addChildNode(atomNode)
-        
         atomsArray.append(atomNode)
         
     }
     
-    func addConnection(_ splitString: Array<Substring>) {
+    private func addConnection(_ splitString: Array<Substring>) {
         if splitString.count < 3 {
             print("CONNECT in ligand file has a wrong format")
         }
@@ -86,7 +74,7 @@ class LigandVisualisationViewController: UIViewController {
         for i in 2..<splitString.count {
             let secondAtomIndex = Int(splitString[i])! - 1
             // Connect the atom only to atoms that have smaller index to avoid creating the same connection several times
-            if atomIndex >= secondAtomIndex { break }
+            if atomIndex <= secondAtomIndex { break }
             let connectEndPoint = atomsArray[secondAtomIndex].position
             let connect = SCNNodeFactory.connection(positionStart: connectStartPoint, positionEnd: connectEndPoint, radius: 0.2)
             
@@ -98,7 +86,6 @@ class LigandVisualisationViewController: UIViewController {
     
     // MARK: Scene
     func cameraAndLightSetup() {
-        // 1
         let scene = SCNScene()
         
         let ambientLightNode = SCNNode()
@@ -118,11 +105,6 @@ class LigandVisualisationViewController: UIViewController {
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3Make(0, 0, 25)
         scene.rootNode.addChildNode(cameraNode)
-        
-        // deleted methaneMoleculeNode
-  
-//        let methaneMoleculeNode = Molecules.methaneMolecule()
-//        scene.rootNode.addChildNode(methaneMoleculeNode)
         
         sceneView.allowsCameraControl = true
         sceneView.scene = scene

@@ -11,8 +11,7 @@ import UIKit
 class ProteinsTableViewContorller: UITableViewController {
    
     // MARK: - Properties
-    // TODO: - Change to false before launch
-    private var userIsLoggedIn = true
+    private var userIsLoggedIn = false
     private var ligandsList = [String]()
     private var filteredLigands = [String]()
     private let searchController = UISearchController(searchResultsController: nil)
@@ -87,20 +86,16 @@ class ProteinsTableViewContorller: UITableViewController {
             segue.identifier == "segueToLigandVisualisationVC",
             let indexPath = tableView.indexPathForSelectedRow,
             let detailViewController = segue.destination as? LigandVisualisationViewController
-            else {
-                return
+            else { return }
+        
+        var ligand: String
+        if isFiltering {
+            ligand = filteredLigands[indexPath.row]
+        } else {
+            ligand = ligandsList[indexPath.row]
         }
-        
-        // TODO: - setup LigandVisualisationViewContorller
-        
-//        var ligand: String
-//        if isFiltering {
-//            ligand = filteredLigands[indexPath.row]
-//        } else {
-//            ligand = ligandsList[indexPath.row]
-//        }
-//
-//        detailViewController.ligand = ligand
+
+        detailViewController.ligandName = ligand
         
     }
     
